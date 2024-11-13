@@ -25,7 +25,7 @@ const ComingSoon = () => {
         loop={true}
         muted={true}
         id="videoBG"
-        className="fixed right-0 bottom-0 min-w-full min-h-full blur-lg scale-110"
+        className="fixed right-0 bottom-0 min-w-full min-h-full blur-lg scale-110 object-cover"
       >
         <source
           src="https://dcowma0th03ok4n2.public.blob.vercel-storage.com/caloidBG2Comp-FMmfMZ9MmHFvX4E0YEBW0W5WLKvY43.mp4"
