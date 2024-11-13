@@ -20,9 +20,10 @@ const ComingSoon = () => {
   return (
     <>
       <video
-        autoPlay
-        muted
-        loop
+        autoPlay={true}
+        playsInline={true}
+        loop={true}
+        muted={true}
         id="videoBG"
         className="fixed right-0 bottom-0 min-w-full min-h-full blur-lg scale-110"
       >
