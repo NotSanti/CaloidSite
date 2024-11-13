@@ -1,72 +1,51 @@
-import { useEffect, useState } from "react";
 import {
   BehanceIcon,
   InstagramIcon,
   SoundCloudIcon,
 } from "../components/Icons";
 import { Link } from "react-router-dom";
+import useTypewriter from "../hooks/useTypewriter";
 
 const ComingSoon = () => {
-  const [displayedText, setDisplayedText] = useState("");
-  const initialText = "caloid";
-  const finalText = "coming soon.";
-  const typingSpeed = 100;
-  const pauseTime = 2000;
+  const texts = [
+    "videographer",
+    "Photographer",
+    "Creative",
+    "Caloid",
+    "Coming soon.",
+  ];
 
-  useEffect(() => {
-    let index = 0;
-    let isDeleting = false;
-    let isTypingFinalText = false;
-
-    const typeText = () => {
-      if (!isDeleting && index <= initialText.length && !isTypingFinalText) {
-        setDisplayedText(initialText.slice(0, index));
-        index++;
-        setTimeout(typeText, typingSpeed);
-      } else if (!isDeleting && !isTypingFinalText) {
-        setTimeout(() => {
-          isDeleting = true;
-          index = initialText.length - 1;
-          typeText();
-        }, pauseTime);
-      } else if (isDeleting && index >= 0) {
-        setDisplayedText(initialText.slice(0, index));
-        index--;
-        setTimeout(typeText, typingSpeed);
-      } else if (isDeleting && index < 0 && !isTypingFinalText) {
-        isDeleting = false;
-        isTypingFinalText = true;
-        index = 0;
-        setTimeout(typeText, typingSpeed);
-      } else if (isTypingFinalText && index <= finalText.length) {
-        setDisplayedText(finalText.slice(0, index));
-        index++;
-        if (index <= finalText.length) {
-          setTimeout(typeText, typingSpeed);
-        }
-      }
-    };
-
-    typeText();
-  }, []);
+  const displayedText = useTypewriter(texts);
 
   return (
-    <div className="h-full flex flex-col justify-center items-center">
-      <div className="text-2xl font-bold h-10">
-        {displayedText.toUpperCase()}
+    <>
+      <video
+        autoPlay
+        muted
+        loop
+        id="videoBG"
+        className="fixed right-0 bottom-0 min-w-full min-h-full blur-lg scale-110"
+      >
+        <source src="src/assets/caloidBG2Comp.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+      <div className="h-full w-full flex flex-col justify-center items-center absolute">
+        <div className="text-2xl font-bold h-10">
+          {displayedText.toUpperCase()}
+        </div>
+        <div className="gap-2 mt-2">
+          <Link to="https://www.instagram.com/caloid" target="_blank">
+            <InstagramIcon width={20} className="hover:text-gray-400" />
+          </Link>
+          <Link to="https://www.behance.net/caloid" target="_blank">
+            <BehanceIcon width={20} className="hover:text-gray-400" />
+          </Link>
+          <Link to="https://soundcloud.com/caloid" target="_blank">
+            <SoundCloudIcon width={20} className="hover:text-gray-400" />
+          </Link>
+        </div>
       </div>
-      <div className="gap-2 mt-2">
-        <Link to="https://www.instagram.com/caloid" target="_blank">
-          <InstagramIcon width={20} className=" hover:opacity-50" />
-        </Link>
-        <Link to="https://www.behance.net/caloid" target="_blank">
-          <BehanceIcon width={20} className=" hover:opacity-50" />
-        </Link>
-        <Link to="https://soundcloud.com/caloid" target="_blank">
-          <SoundCloudIcon width={20} className=" hover:opacity-50" />
-        </Link>
-      </div>
-    </div>
+    </>
   );
 };
 
