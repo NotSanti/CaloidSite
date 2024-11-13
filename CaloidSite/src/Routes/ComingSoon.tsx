@@ -26,7 +26,10 @@ const ComingSoon = () => {
         id="videoBG"
         className="fixed right-0 bottom-0 min-w-full min-h-full blur-lg scale-110"
       >
-        <source src="/caloidBGComp.mp4" type="video/mp4" />
+        <source
+          src="https://dcowma0th03ok4n2.public.blob.vercel-storage.com/caloidBG2Comp-FMmfMZ9MmHFvX4E0YEBW0W5WLKvY43.mp4"
+          type="video/mp4"
+        />
         Your browser does not support HTML5 video.
       </video>
       <div className="h-full w-full flex flex-col justify-center items-center absolute">
